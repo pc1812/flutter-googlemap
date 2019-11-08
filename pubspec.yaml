@@ -27,6 +27,12 @@ dependencies:
   # The following adds the package for geolocation capability.
   geolocator: ^5.1.4
 
+  # The following adds the webview support.
+  webview_flutter: ^0.3.15
+
+  # The following adds the provider.
+  provider: ^3.1.0+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
