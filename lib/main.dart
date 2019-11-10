@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:testflutter2019/bloc/geo_bloc.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:testflutter2019/view/map_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: MyHomePage(title: 'Flutter Demo Home Page'),
-        home: MyWebView(title: 'Google Map'),
+        home: GoogleMapView(title: 'Google Map View'),
       )
     );
   }
@@ -182,33 +182,5 @@ class GeolocationExampleState extends State {
         )
       ),
     );
-  }
-}
-
-class MyWebView extends StatelessWidget {
-  final String title;
-
-  final Completer<WebViewController> _controller =
-      Completer<WebViewController>();
-      
-  MyWebView({
-    @required this.title
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    var bloc = Provider.of<GeoBloc>(context);
-
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: WebView(
-          initialUrl: bloc.googleUrl,
-          javascriptMode: JavascriptMode.unrestricted,
-          onWebViewCreated: (WebViewController webViewController) {
-            _controller.complete(webViewController);
-          },
-        ));
   }
 }
